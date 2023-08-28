@@ -13,3 +13,5 @@ Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::post('/createNote',[ItemController::class,'create']);
 Route::put('/updateNote',[ItemController::class, 'updateNote']);
+Route::delete('/deleteNote',[ItemController::class,'deleteNote']);
+Route::get('/getNotes',[ItemController::class,'getNotes']);
