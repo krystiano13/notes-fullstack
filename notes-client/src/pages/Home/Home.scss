@@ -56,6 +56,7 @@
 
     &__waves {
       width: 100%;
+      animation : wavesAppear 250ms ease-in;
     }
   }
 
@@ -68,5 +69,17 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+}
+
+@keyframes wavesAppear {
+  from {
+    opacity : 0;
+    transform: translateY(50vh);
+  }
+
+  to {
+    opacity : 1;
+    transform: translateY(0vh);
   }
 }
