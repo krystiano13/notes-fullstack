@@ -69,4 +69,21 @@ class ItemController extends Controller
         }
     } 
 
+    public function deleteNote(Request $request) {
+        $validator = Validator::make($request -> all(),[
+            'user_id' => 'required',
+            'id' => 'required'
+        ]);
+
+        if($validator -> fails()) {
+            return json_encode(['err' => 'error']);
+        }
+
+        else {
+            $fields = $request -> all();
+            Item::where("user_id","=",$fields['user_id'],'and') -> where("id",$fields['id']) -> delete();
+            return json_encode(['msg' => 'success']);
+        }
+    } 
+
 }
