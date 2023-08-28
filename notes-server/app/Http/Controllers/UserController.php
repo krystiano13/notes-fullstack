@@ -25,4 +25,27 @@ class UserController extends Controller
             return json_encode(['msg' => 'success']);
         }      
     }
+
+    public function login(Request $request) {
+        $validator = Validator::make($request -> all(),[
+            'username' => ['required'],
+            'password' => ['required']
+        ]);
+
+        $fields = $request -> all();        
+        $result = User::where('username','=',$fields['username'])->first('password');
+
+        if($result -> count() <= 0 || $validator -> fails()) {
+            return json_encode(['err' => 'error']);
+        }
+        else {
+            if(password_verify($fields['password'],$result['password'])) {
+                return json_encode(['msg' => 'success']);
+            }
+
+            else {
+                return json_encode(['err' => 'error']);
+            }
+        }
+    }
 }
