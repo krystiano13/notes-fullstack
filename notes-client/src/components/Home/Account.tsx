@@ -1,6 +1,15 @@
+import type { FunctionComponent } from "preact";
 import waves from "../../assets/images/layered-waves-haikei.svg";
 
-export const Account = () => {
+interface AccountProps {
+  switchLoginMode: (value: boolean) => void;
+  loginMode: boolean;
+}
+
+export const Account: FunctionComponent<AccountProps> = ({
+  switchLoginMode,
+  loginMode,
+}) => {
   return (
     <section
       class={
@@ -8,10 +17,12 @@ export const Account = () => {
       }
     >
       <form
-        class={"Home__account__form position-absolute p-5 d-flex flex-column"}
+        class={"Home__account__form position-absolute p-5 d-flex flex-column align-items-start"}
       >
-        <h1 class="font-head fw-bold"><span>Notes</span> App</h1>
-        <h2 class="font-head">Register</h2>
+        <h1 class="font-head fw-bold">
+          <span>Notes</span> App
+        </h1>
+        <h2 class="font-head">{loginMode ? "Log In" : "Register"}</h2>
         <input
           class="mt-3"
           name="username"
@@ -24,16 +35,28 @@ export const Account = () => {
           placeholder={"password"}
           type="password"
         />
-        <input
-          class="mt-3"
-          name={"password2"}
-          placeholder={"repeat password"}
-          type="password"
-        />
+        {loginMode === false && (
+          <input
+            class="mt-3"
+            name={"password2"}
+            placeholder={"repeat password"}
+            type="password"
+          />
+        )}
         <button class="mt-3 fw-bold" type={"submit"}>
-          Register
+          {loginMode ? "Log In" : "Register"}
         </button>
-        <p class="switch mt-3">Have got an account already ?</p>
+        {loginMode === true && (
+          <button onClick={() => switchLoginMode(false)} class="switch mt-5">
+            Haven't got an account yet ?
+          </button>
+        )}
+
+        {loginMode === false && (
+          <button onClick={() => switchLoginMode(true)} class="switch mt-5">
+            Have got an account already ?
+          </button>
+        )}
       </form>
       <img class="Home__account__waves" src={waves} alt="waves" />
     </section>

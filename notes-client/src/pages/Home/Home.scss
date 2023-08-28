@@ -39,6 +39,19 @@
         border: none;
         font-size: 1.3rem;
       }
+
+      .switch {
+        background-color: transparent;
+        color: var(--text);
+        font-size : 1rem;
+        text-align: left;
+
+        transition: color 250ms;
+      }
+
+      .switch:hover {
+        color : var(--primary);
+      }
     }
 
     &__waves {
