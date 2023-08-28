@@ -27,6 +27,7 @@
   --background: #0c0a03;
   --primary: #dbc87b;
   --secondary: #28220b;
+  --secondaryLight: #383011;
   --accent: #c8ab37;
 }
 
@@ -35,4 +36,10 @@ main {
   height: 100vh;
   background-color: var(--background);
   color: var(--text);
+  font-family: 'Inter';
 }
+
+.font-head {
+    font-family: 'Montserrat';
+}
+
