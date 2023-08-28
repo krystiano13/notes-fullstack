@@ -5,6 +5,7 @@ import { Home } from './pages/Home/index.jsx';
 import { NotFound } from './pages/_404.jsx';
 
 import './styles/base.css';
+import './styles/layout.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
