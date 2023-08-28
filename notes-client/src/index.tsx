@@ -1,15 +1,15 @@
 import { render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
 
-import { Header } from './components/Header.jsx';
 import { Home } from './pages/Home/index.jsx';
 import { NotFound } from './pages/_404.jsx';
-import './style.css';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export function App() {
 	return (
 		<LocationProvider>
-			<Header />
 			<main>
 				<Router>
 					<Route path="/" component={Home} />
