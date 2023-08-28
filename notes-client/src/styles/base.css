@@ -1,14 +1,38 @@
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  src: url("../assets/fonts/Montserrat-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 500;
+  src: url("../assets/fonts/Montserrat-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  src: url("../assets/fonts/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 500;
+  src: url("../assets/fonts/Inter-Medium.woff2") format("woff2");
+}
+
 :root {
-    --text: #FBF8EF;
-    --background: #0C0A03;
-    --primary: #DBC87B;
-    --secondary: #28220B;
-    --accent: #C8AB37;
+  --text: #fbf8ef;
+  --background: #0c0a03;
+  --primary: #dbc87b;
+  --secondary: #28220b;
+  --accent: #c8ab37;
 }
 
 main {
-    width : 100vw;
-    height : 100vh;
-    background-color: var(--background);
-    color: var(--text);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background);
+  color: var(--text);
 }
