@@ -15,6 +15,7 @@ const login = async (
     .then((res) => res.json())
     .then((data) => {
       if (data.msg) {
+        localStorage.setItem("username", username);
         onSuccess();
         return;
       } else {

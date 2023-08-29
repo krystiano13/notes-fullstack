@@ -1,5 +1,7 @@
 import type { FunctionComponent } from "preact";
+import { useLocation } from "preact-iso";
 import { register } from "../../functions/register";
+import { login } from "../../functions/login";
 import waves from "../../assets/images/layered-waves-haikei.svg";
 
 interface AccountProps {
@@ -11,6 +13,8 @@ export const Account: FunctionComponent<AccountProps> = ({
   switchLoginMode,
   loginMode,
 }) => {
+  const location = useLocation();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -24,6 +28,18 @@ export const Account: FunctionComponent<AccountProps> = ({
     );
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    login(
+      formData.get("username") as string,
+      formData.get("password") as string,
+      () => location.route("/panel"),
+      () => alert("Error while logging in to account !")
+    );
+  };
+
   return (
     <section
       class={
@@ -34,7 +50,7 @@ export const Account: FunctionComponent<AccountProps> = ({
         class={
           "Home__account__form position-absolute p-5 d-flex flex-column align-items-start"
         }
-        onSubmit={loginMode ? null : handleRegister}
+        onSubmit={loginMode ? handleLogin : handleRegister}
       >
         <h1 class="font-head fw-bold">
           <span>Notes</span> App
