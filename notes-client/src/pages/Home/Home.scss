@@ -15,7 +15,11 @@
         font-size: 4rem;
 
         span {
-          background: -webkit-linear-gradient(45deg,var(--primary), var(--secondaryLight));
+          background: -webkit-linear-gradient(
+            45deg,
+            var(--primary),
+            var(--secondaryLight)
+          );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -43,20 +47,19 @@
       .switch {
         background-color: transparent;
         color: var(--text);
-        font-size : 1rem;
+        font-size: 1rem;
         text-align: left;
 
         transition: color 250ms;
       }
 
       .switch:hover {
-        color : var(--primary);
+        color: var(--primary);
       }
     }
 
     &__waves {
       width: 100%;
-      animation : wavesAppear 250ms ease-in;
     }
   }
 
@@ -69,17 +72,5 @@
       height: 100%;
       object-fit: cover;
     }
-  }
-}
-
-@keyframes wavesAppear {
-  from {
-    opacity : 0;
-    transform: translateY(50vh);
-  }
-
-  to {
-    opacity : 1;
-    transform: translateY(0vh);
   }
 }

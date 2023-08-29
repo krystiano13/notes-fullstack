@@ -1,6 +1,9 @@
 import { useState } from "@preact/compat";
 import { useEffect } from "preact/hooks";
 import { useLocation } from "preact-iso";
+import { Taskbar } from "../../components/Panel/Taskbar";
+
+import './Panel.min.css';
 
 const Panel = () => {
   const [user, setUser] = useState<string>("Default User");
@@ -21,9 +24,8 @@ const Panel = () => {
   },[]);
 
   return (
-    <section>
-      <h1>Hello { user }</h1>
-      <button onClick={logout}>Log Out</button>
+    <section class="Panel">
+      <Taskbar logout={logout} username={user} />
     </section>
   );
 };
