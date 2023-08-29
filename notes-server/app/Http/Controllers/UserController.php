@@ -11,15 +11,17 @@ class UserController extends Controller
     public function register(Request $request) {
        $validator = Validator::make($request -> all(),[
         'username' => ['required', 'min:5', 'max:64', 'unique:users'],
-        'password' => ['required', 'min:8']
+        'password' => ['required', 'min:8'],
+        'password2' => ['required', 'min:8']
        ]);
 
-        if($validator->fails()) {
+        $fields = $request -> all(); 
+
+        if($validator->fails() || $fields['password'] !== $fields['password2']) {
           return json_encode(['err' => 'error']);  
         }
 
         else {
-            $fields = $request -> all(); 
             $fields['password'] = password_hash($fields['password'], PASSWORD_DEFAULT);
             User::create($fields);
             return json_encode(['msg' => 'success']);
