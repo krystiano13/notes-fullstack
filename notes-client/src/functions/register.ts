@@ -1,6 +1,8 @@
-
-const register = async (username: string, password: string, password2: string):Promise<boolean> => {
-    if (password !== password2) return false;
+const register = async (username: string, password: string, password2: string):Promise<void> => {
+    if (password !== password2) {
+        alert('Passwords are not identical !');
+        return;
+    } 
 
     const formData = new FormData();
 
@@ -12,10 +14,14 @@ const register = async (username: string, password: string, password2: string):P
         .then(res => res.json())
         .then(data => {
             if (data.msg) {
-                return true;
+                alert('Account was successfullt created !');
+                return;
             }
 
-            else return false;
+            else {
+                alert('Error while creating account !');
+                return;
+            }
         })
 }
 

@@ -1,4 +1,5 @@
 import type { FunctionComponent } from "preact";
+import { register } from "../../functions/register";
 import waves from "../../assets/images/layered-waves-haikei.svg";
 
 interface AccountProps {
@@ -10,6 +11,18 @@ export const Account: FunctionComponent<AccountProps> = ({
   switchLoginMode,
   loginMode,
 }) => {
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    register(
+      formData.get("username") as string,
+      formData.get("password") as string,
+      formData.get("password2") as string
+    );
+  };
+
   return (
     <section
       class={
@@ -18,6 +31,7 @@ export const Account: FunctionComponent<AccountProps> = ({
     >
       <form
         class={"Home__account__form position-absolute p-5 d-flex flex-column align-items-start"}
+        onSubmit={loginMode ? null : handleRegister}
       >
         <h1 class="font-head fw-bold">
           <span>Notes</span> App
