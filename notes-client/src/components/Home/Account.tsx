@@ -11,7 +11,6 @@ export const Account: FunctionComponent<AccountProps> = ({
   switchLoginMode,
   loginMode,
 }) => {
-
   const handleRegister = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -19,7 +18,9 @@ export const Account: FunctionComponent<AccountProps> = ({
     register(
       formData.get("username") as string,
       formData.get("password") as string,
-      formData.get("password2") as string
+      formData.get("password2") as string,
+      () => switchLoginMode(true),
+      () => switchLoginMode(false)
     );
   };
 
@@ -30,7 +31,9 @@ export const Account: FunctionComponent<AccountProps> = ({
       }
     >
       <form
-        class={"Home__account__form position-absolute p-5 d-flex flex-column align-items-start"}
+        class={
+          "Home__account__form position-absolute p-5 d-flex flex-column align-items-start"
+        }
         onSubmit={loginMode ? null : handleRegister}
       >
         <h1 class="font-head fw-bold">
