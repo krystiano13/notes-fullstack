@@ -2,6 +2,7 @@
     width : 100vw;
     height : 100vh;
     background-color: var(--background);
+    overflow-x: hidden;
 
     &__taskbar {
         width : 100%;
@@ -44,13 +45,33 @@
     .Notes_Container {
         width : 100vw;
         height : calc(100vh - 60px);
-        overflow-x: auto;
+        min-height : 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         @media screen and (min-width : 2400px) {
             height : calc(100vh - 120px);
         }
 
-        display : flex;
-        align-items: center;
+        .Note {
+            min-width : 200px;
+            min-height : 200px;
+            margin-top : 10px;
+
+            padding : 1rem;
+            border-radius: 2rem;
+
+            width : 20%;
+            margin-left : 1rem;
+            cursor: pointer;
+
+            background-color: var(--secondary);
+
+            transition: background-color 250ms;
+        }
+
+        .Note:hover {
+            background-color: var(--secondaryLight);
+        }
     }
 }

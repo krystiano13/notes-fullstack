@@ -11,6 +11,7 @@
 		"@preact/compat": "^17.1.2",
 		"aos": "^2.3.4",
 		"bootstrap": "^5.3.1",
+		"macy": "^2.5.1",
 		"preact": "^10.13.1",
 		"preact-iso": "^2.3.1",
 		"preact-render-to-string": "^6.2.1"

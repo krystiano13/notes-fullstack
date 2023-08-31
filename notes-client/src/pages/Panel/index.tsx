@@ -1,8 +1,9 @@
 import { useState } from "@preact/compat";
-import { useEffect } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 import { useLocation } from "preact-iso";
 import { Taskbar } from "../../components/Panel/Taskbar";
 import { Note } from "../../components/Panel/Note";
+import Macy from "macy";
 
 import "./Panel.min.css";
 
@@ -10,6 +11,8 @@ const Panel = () => {
   const [user, setUser] = useState<string>("Default User");
   const [notes, setNotes] = useState([]);
   const location = useLocation();
+  const container = useRef(null);
+  const macy = useRef();
 
   const getNotes = async (user_id) => {
     await fetch(`http://127.0.0.1:8000/api/getNotes/${user_id}`, {
@@ -34,16 +37,38 @@ const Panel = () => {
     } else {
       location.route("/");
     }
+
     getNotes(localStorage.getItem("user_id"));
-    console.log(notes);
+    console.log(localStorage.getItem("user_id"));
   }, []);
+
+  useEffect(() => {
+    macy.current = Macy({
+      container: container.current,
+      columns: 6,
+      margin: {
+        x: 10,
+        y: 0
+      },
+      breakAt: {
+        1200: 5,
+        940: 3,
+        520: 2,
+        400: 1,
+      },
+    });
+  }, [notes]);
 
   return (
     <section class="Panel">
       <Taskbar logout={logout} username={user} />
-      <div class="Notes_Container">
+      <div ref={container} class="Notes_Container">
         {notes.map((item) => (
-          <Note key={item.id} title={item.title} content={item.content} />
+          <Note
+            key={item.id}
+            title={item.title}
+            content={item.content}
+          />
         ))}
       </div>
     </section>
