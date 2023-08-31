@@ -36,13 +36,14 @@ class UserController extends Controller
 
         $fields = $request -> all();        
         $result = User::where('username','=',$fields['username'])->first('password');
+        $Id = User::where('username','=',$fields['username'])->first('id');
 
         if($result -> count() <= 0 || $validator -> fails()) {
             return json_encode(['err' => 'error']);
         }
         else {
             if(password_verify($fields['password'],$result['password'])) {
-                return json_encode(['msg' => 'success']);
+                return json_encode(['msg' => 'success', 'id' => $Id]);
             }
 
             else {

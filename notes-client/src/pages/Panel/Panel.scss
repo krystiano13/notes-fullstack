@@ -40,4 +40,17 @@
             background-color : var(--secondaryLight);
         }
     }
+
+    .Notes_Container {
+        width : 100vw;
+        height : calc(100vh - 60px);
+        overflow-x: auto;
+
+        @media screen and (min-width : 2400px) {
+            height : calc(100vh - 120px);
+        }
+
+        display : flex;
+        align-items: center;
+    }
 }
