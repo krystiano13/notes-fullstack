@@ -54,19 +54,8 @@ class ItemController extends Controller
         }
     }
 
-    public function getNotes(Request $request) {
-        $validator = Validator::make($request -> all(),[
-            'user_id' => 'required'
-        ]);
-
-        if($validator -> fails()) {
-            return json_encode(['err' => 'error']);
-        }
-
-        else {
-            $fields = $request -> all(); 
-            return json_encode(Item::where('user_id',$fields['user_id']) -> get());
-        }
+    public function getNotes($user_id) {
+        return json_encode(Item::where('user_id',$user_id) -> get());       
     } 
 
     public function deleteNote(Request $request) {

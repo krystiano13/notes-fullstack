@@ -16,7 +16,7 @@ const login = async (
     .then((data) => {
       if (data.msg) {
         localStorage.setItem("username", username);
-        localStorage.setItem("user_id", data.id);
+        localStorage.setItem("user_id", data[0].id);
         onSuccess();
         return;
       } else {
