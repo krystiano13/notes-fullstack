@@ -1,0 +1,12 @@
+.ModalWrapper {
+    position: fixed;
+    z-index: 1000;
+    width : 100vw;
+    height : 100vh;
+}
+
+.PanelModal {
+    min-width : 20rem;
+    min-height : 35rem;
+    background-color: var(--secondaryLight);
+}

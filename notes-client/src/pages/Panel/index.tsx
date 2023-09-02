@@ -4,12 +4,14 @@ import { useLocation } from "preact-iso";
 import { Taskbar } from "../../components/Panel/Taskbar";
 import { Note } from "../../components/Panel/Note";
 import Macy from "macy";
+import { Modal } from "../../components/Panel/Modal";
 
 import "./Panel.min.css";
 
 const Panel = () => {
   const [user, setUser] = useState<string>("Default User");
   const [notes, setNotes] = useState([]);
+  const [modal, setModal] = useState<boolean>(false);
   const location = useLocation();
   const container = useRef(null);
   const macy = useRef();
@@ -52,9 +54,7 @@ const Panel = () => {
       },
       breakAt: {
         1200: 5,
-        940: 3,
-        520: 2,
-        400: 1,
+        992: 1
       },
     });
   }, [notes]);
@@ -62,6 +62,7 @@ const Panel = () => {
   return (
     <section class="Panel">
       <Taskbar logout={logout} username={user} />
+      <Modal shown={modal} />
       <div ref={container} class="Notes_Container">
         {notes.map((item) => (
           <Note
