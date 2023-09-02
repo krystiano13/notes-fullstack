@@ -13,6 +13,7 @@ const Panel = () => {
   const [notes, setNotes] = useState([]);
   const [modal, setModal] = useState<boolean>(false);
   const [mode, setMode] = useState<string>("add");
+  const [target, setTarget] = useState<string>();
   const location = useLocation();
   const container = useRef(null);
   const macy = useRef();
@@ -70,7 +71,7 @@ const Panel = () => {
         logout={logout}
         username={user}
       />
-      <Modal hideModal={() => setModal(false)} mode={mode} shown={modal} />
+      <Modal target={target} hideModal={() => setModal(false)} mode={mode} shown={modal} />
       <div ref={container} class="Notes_Container">
         {notes.map((item) => (
           <Note
@@ -78,6 +79,7 @@ const Panel = () => {
             title={item.title}
             content={item.content}
             showModal={() => {
+              setTarget(item.id);
               setMode("edit");
               setModal(true);
             }}

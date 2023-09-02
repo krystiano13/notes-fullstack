@@ -1,5 +1,6 @@
 import type { FunctionComponent } from "preact";
 import { add } from "../../functions/add";
+import { deleteNote } from "../../functions/delete";
 import { useLocation } from "preact-iso";
 
 import "./Modal.css";
@@ -9,9 +10,15 @@ interface ModalProps {
   shown: boolean;
   mode: string;
   hideModal: () => void;
+  target: string;
 }
 
-const Modal: FunctionComponent<ModalProps> = ({ shown, mode, hideModal }) => {
+const Modal: FunctionComponent<ModalProps> = ({
+  shown,
+  mode,
+  hideModal,
+  target,
+}) => {
   const form = useRef<HTMLFormElement>(null);
   const location = useLocation();
 
@@ -50,7 +57,18 @@ const Modal: FunctionComponent<ModalProps> = ({ shown, mode, hideModal }) => {
             {mode === "add" ? "Add" : "Edit"}
           </button>
           {mode !== "add" && (
-            <button id="delete" type="button">
+            <button
+              onClick={() => {
+                deleteNote(
+                  target,
+                  localStorage.getItem("user_id"),
+                  () => window.location.reload(),
+                  () => alert("Can't delete that note")
+                );
+              }}
+              id="delete"
+              type="button"
+            >
               Delete
             </button>
           )}
