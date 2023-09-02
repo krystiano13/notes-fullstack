@@ -62,15 +62,25 @@ const Panel = () => {
 
   return (
     <section class="Panel">
-      <Taskbar logout={logout} username={user} />
-      <Modal mode={mode} shown={modal} />
+      <Taskbar
+        showModal={() => {
+          setMode("add");
+          setModal(true);
+        }}
+        logout={logout}
+        username={user}
+      />
+      <Modal hideModal={() => setModal(false)} mode={mode} shown={modal} />
       <div ref={container} class="Notes_Container">
         {notes.map((item) => (
           <Note
             key={item.id}
             title={item.title}
             content={item.content}
-            showModal={() => setModal(true)}
+            showModal={() => {
+              setMode("edit");
+              setModal(true);
+            }}
           />
         ))}
       </div>

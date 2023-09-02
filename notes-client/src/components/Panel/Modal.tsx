@@ -5,9 +5,10 @@ import "./Modal.css";
 interface ModalProps {
   shown: boolean;
   mode: string;
+  hideModal: () => void;
 }
 
-const Modal: FunctionComponent<ModalProps> = ({ shown, mode }) => {
+const Modal: FunctionComponent<ModalProps> = ({ shown, mode, hideModal }) => {
   return (
     <div
       class={
@@ -28,7 +29,7 @@ const Modal: FunctionComponent<ModalProps> = ({ shown, mode }) => {
               Delete
             </button>
           )}
-          <button id="cancel" type="button">
+          <button onClick={hideModal} id="cancel" type="button">
             Cancel
           </button>
         </div>
