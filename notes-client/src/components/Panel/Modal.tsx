@@ -15,12 +15,19 @@ const Modal: FunctionComponent<ModalProps> = ({ shown }) => {
           : "hidden ModalWrapper d-flex justify-content-center align-items-center"
       }
     >
-      <form class="PanelModal">
+      <form class="PanelModal d-flex flex-column align-items-center justify-content-center">
         <input type="text" placeholder="title" name="title" />
         <textarea placeholder="content" name="content"></textarea>
         <div class="PanelModalButtons">
-          <button type="submit">Edit</button>
-          <button type="button">Delete</button>
+          <button id="submit" type="submit">
+            Edit
+          </button>
+          <button id="delete" type="button">
+            Delete
+          </button>
+          <button id="cancel" type="button">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
