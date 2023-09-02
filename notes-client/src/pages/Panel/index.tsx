@@ -12,6 +12,7 @@ const Panel = () => {
   const [user, setUser] = useState<string>("Default User");
   const [notes, setNotes] = useState([]);
   const [modal, setModal] = useState<boolean>(false);
+  const [mode, setMode] = useState<string>("add");
   const location = useLocation();
   const container = useRef(null);
   const macy = useRef();
@@ -62,7 +63,7 @@ const Panel = () => {
   return (
     <section class="Panel">
       <Taskbar logout={logout} username={user} />
-      <Modal shown={modal} />
+      <Modal mode={mode} shown={modal} />
       <div ref={container} class="Notes_Container">
         {notes.map((item) => (
           <Note

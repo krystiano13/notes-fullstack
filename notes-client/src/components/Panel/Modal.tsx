@@ -4,9 +4,10 @@ import "./Modal.css";
 
 interface ModalProps {
   shown: boolean;
+  mode: string;
 }
 
-const Modal: FunctionComponent<ModalProps> = ({ shown }) => {
+const Modal: FunctionComponent<ModalProps> = ({ shown, mode }) => {
   return (
     <div
       class={
@@ -20,11 +21,13 @@ const Modal: FunctionComponent<ModalProps> = ({ shown }) => {
         <textarea placeholder="content" name="content"></textarea>
         <div class="PanelModalButtons">
           <button id="submit" type="submit">
-            Edit
+            {mode === "add" ? "Add" : "Edit"}
           </button>
-          <button id="delete" type="button">
-            Delete
-          </button>
+          {mode !== "add" && (
+            <button id="delete" type="button">
+              Delete
+            </button>
+          )}
           <button id="cancel" type="button">
             Cancel
           </button>
