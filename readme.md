@@ -13,3 +13,6 @@
     <li>HTML</li>
     <li>SCSS</li>
 </ul>
+
+<h2>Setup</h2>
+<p>Coming soon</p>
